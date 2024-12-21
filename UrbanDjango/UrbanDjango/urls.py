@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from task2.views import main_page, First_page
-from task3.views import main_page, catalog_page, basket_page
+from task4.views import main_page, catalog_page, basket_page, menu
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,6 @@ urlpatterns = [
     path('first/', First_page.as_view()),
     path('platform/', main_page),
     path('platform/catalog/', catalog_page),
-    path('platform/basket/', basket_page)
+    path('platform/basket/', basket_page),
+    path('platform/menu/', menu)
 ]
