@@ -9,19 +9,20 @@ def sign_up_by_html(request):
     success = None
 
     if request.method == 'POST':
-        name = request.POST.get('username')
+        name = request.POST.get('name')
         password = request.POST.get('password')
         repeat_password = request.POST.get('repeat_password')
         age = request.POST.get('age')
 
         if name not in users and password == repeat_password and int(age) >= 18:
             success = f'Приветствуем, {name}!'
+            users.append(name)
 
-        if name in users:
+        elif name in users:
             info['error'] = 'Пользователь уже существует'
-        if password != repeat_password:
+        elif password != repeat_password:
             info['error'] = 'Пароли не совпадают'
-        if int(age) < 18:
+        elif int(age) < 18:
             info['error'] = 'Вы должны быть старше 18'
 
     context = {
@@ -47,6 +48,7 @@ def sign_up_by_django(request):
 
             if name not in users and password == repeat_password and int(age) >= 18:
                 success = f'Приветствуем, {name}!'
+                users.append(name)
 
             elif name in users:
                 info['error'] = 'Пользователь уже существует'
